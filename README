@@ -1,0 +1,21 @@
+# pre requisite:
+
+- C++ compiler (e.g., g++)
+- CMake
+- Google Test library
+
+1. To Build the project using make:
+
+make clean
+make
+
+2. Running application:
+
+example command - 
+
+./logcat_parser2 --file logcat.txt --start-time 00:00:01.715 --end-time 00:00:01.716
+
+
+3. Running test: 
+
+./test_log
