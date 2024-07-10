@@ -14,6 +14,7 @@ make
 example command - 
 
 ./logcat_parser2 --file logcat.txt --start-time 00:00:01.715 --end-time 00:00:01.716
+./logcat_parser2 --file logcat.txt --pid 2145
 
 
 3. Running test: 
