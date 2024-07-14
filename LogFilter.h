@@ -11,3 +11,10 @@ public:
 };
  
 #endif // LOGFILTER_H
+
+/*
+The LogFilter class serves as a concrete implementation of the ILogFilter interface,
+providing specific filtering logic for log entries. This separation of filtering logic into its own class allows 
+for a modular design where the parsing and filtering functionalities are cleanly separated. 
+This design enhances maintainability and testing, as each class focuses on a single responsibility.
+*/

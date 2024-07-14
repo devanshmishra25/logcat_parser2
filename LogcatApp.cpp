@@ -9,17 +9,26 @@ LogcatApp::LogcatApp(int argc, char* argv[], ILogParser* parser, ILogFilter* fil
 }
  
 LogcatApp::~LogcatApp() {
+
+    //Deletes the parser and filter objects to free up resources, 
+    //assuming responsibility for their lifecycle since they are passed as pointers to the constructor.
     delete parser;
     delete filter;
 }
  
 void LogcatApp::parseCommandLineArguments(int argc, char* argv[]) {
+    /*
+    int argc: This is the count of command-line arguments.
+    char* argv[]: This is an array of C-style strings (null-terminated character arrays), each containing one command-line argument.
+    */
+
+
     for (int i = 1; i < argc; ++i) {
-        std::string arg = argv[i];
+        std::string arg = argv[i]; // converts c-style string to normal string object for easier maipulation of data
         if (arg == "--file" && i + 1 < argc) {
             filePath = argv[++i];
         } else if (arg == "--pid" && i + 1 < argc) {
-            pid = std::atoi(argv[++i]);
+            pid = std::atoi(argv[++i]); // atoi - converts string to integer
             filterByPid = true;
         } else if (arg == "--tid" && i + 1 < argc) {
             tid = std::atoi(argv[++i]);
@@ -48,6 +57,6 @@ void LogcatApp::run() {
     }
  
     for (const auto& entry : entries) {
-        std::cout << entry << std::endl;
+        std::cout << entry << std::endl; //operator overloading defined in logentry.h
     }
 }
