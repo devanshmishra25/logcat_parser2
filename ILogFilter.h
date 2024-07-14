@@ -9,6 +9,8 @@ class ILogFilter {
 public:
     virtual ~ILogFilter() = default;
     virtual std::vector<LogEntry> filterByPid(const std::vector<LogEntry>& entries, int pid) = 0;
+    //Must be implemented by any class inheriting from ILogFilter. It filters log entries by process ID (pid).
+
     virtual std::vector<LogEntry> filterByTid(const std::vector<LogEntry>& entries, int tid) = 0;
     virtual std::vector<LogEntry> filterByTimeRange(const std::vector<LogEntry>& entries, const std::string& startTime, const std::string& endTime) = 0;
 };
