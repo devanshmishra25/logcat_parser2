@@ -12,15 +12,15 @@ LogEntry LogEntry::fromLogLine(const std::string& logLine) { // first logEntry i
     iss >> date >> time >> pid >> tid >> level;
     std::getline(iss, tag, ':');
     std::getline(iss, message);
-    return LogEntry(date, time, pid, tid, level, tag, message);
+    return LogEntry(date, time, pid, tid, level, tag, message); //return like Logentry object
 }
 
 bool LogEntry::matchesPid(int pid) const {
-    return this->pid == pid;
+    return this->pid == pid; // this-> pid is the logentry part and just pid is the user specified pid
 }
 
 bool LogEntry::matchesTid(int tid) const {
-    return this->tid == tid;
+    return this->tid == tid; // this-> itd is the logentry part and just tid is the user specified pid
 }
 
 int stringToInt(const std::string& str) {
@@ -36,7 +36,7 @@ int stringToInt(const std::string& str) {
 }
 
 bool LogEntry::isWithinTimeRange(const std::string& startTime, const std::string& endTime) const {
-    auto parseTime = [](const std::string& timeStr) {
+    auto parseTime = [](const std::string& timeStr) { //uses lambda function to parse time strings into numerical values
         int hours = 0, minutes = 0, seconds = 0, milliseconds = 0;
 
         if (timeStr.length() >= 8) {
@@ -63,4 +63,9 @@ bool LogEntry::isWithinTimeRange(const std::string& startTime, const std::string
 std::ostream& operator<<(std::ostream& os, const LogEntry& entry) {
     os << entry.date << " " << entry.time << " " << entry.pid << " " << entry.tid << " " << entry.level << " " << entry.tag << ": " << entry.message;
     return os;
+
+    /*
+    return os;: Returns the os stream. This return allows the function to be chained with other output operations.
+    For example, you can do std::cout << entry1 << entry2;, and both entries will be printed in sequence.
+    */
 }
