@@ -5,7 +5,7 @@
 LogEntry::LogEntry(const std::string& date, const std::string& time, int pid, int tid, const std::string& level, const std::string& tag, const std::string& message)
     : date(date), time(time), pid(pid), tid(tid), level(level), tag(tag), message(message) {}
 
-LogEntry LogEntry::fromLogLine(const std::string& logLine) {
+LogEntry LogEntry::fromLogLine(const std::string& logLine) { // first logEntry is the return type and second is the class name
     std::istringstream iss(logLine);
     std::string date, time, level, tag, message;
     int pid, tid;
